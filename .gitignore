@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+api/.venv/
+.venv/
+env/
+venv/
+
+# Next.js build
+web/.next/
+.next/
+out/
+build/
+dist/
+
+# Python cache & testing
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# IDE and OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Vercel artifacts
+.vercel
