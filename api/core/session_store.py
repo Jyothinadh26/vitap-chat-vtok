@@ -1,7 +1,11 @@
 import json
 import time
-from typing import Optional, Dict
-from upstash_redis import Redis
+from typing import Optional, Dict, Any
+try:
+    from upstash_redis import Redis
+except ImportError:
+    Redis = None
+
 from api.core.config import settings
 from api.models.schemas import StudentSession
 
@@ -9,7 +13,9 @@ from api.models.schemas import StudentSession
 _in_memory_sessions: Dict[str, dict] = {}
 _in_memory_expirations: Dict[str, float] = {}
 
-def get_redis_client() -> Optional[Redis]:
+def get_redis_client() -> Optional[Any]:
+    if Redis is None:
+        return None
     if settings.UPSTASH_REDIS_REST_URL and settings.UPSTASH_REDIS_REST_TOKEN:
         try:
             return Redis(

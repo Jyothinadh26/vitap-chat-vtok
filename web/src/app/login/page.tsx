@@ -114,11 +114,18 @@ export default function LoginPage() {
       if (!resp.ok) {
         let errMessage = `Gateway returned HTTP ${resp.status}`;
         try {
-          const errData = await resp.json();
-          if (errData.detail) errMessage = errData.detail;
-          else if (errData.message) errMessage = errData.message;
+          const rawText = await resp.text();
+          try {
+            const errData = JSON.parse(rawText);
+            if (errData.detail) errMessage = errData.detail;
+            else if (errData.message) errMessage = errData.message;
+          } catch {
+            if (rawText && rawText.length < 120 && !rawText.includes("<!DOCTYPE")) {
+              errMessage = `${errMessage}: ${rawText.trim()}`;
+            }
+          }
         } catch {
-          // Response body was not JSON
+          // Could not read body
         }
         setIsLoading(false);
         setSyncStep(null);

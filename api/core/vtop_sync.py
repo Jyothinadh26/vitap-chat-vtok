@@ -13,6 +13,13 @@ from api.core.session_store import save_session
 _pending_login_flows: Dict[str, dict] = {}
 
 def get_mock_session_data() -> dict:
+    try:
+        from api.core.fixtures.mock_data import MOCK_SESSION_DATA
+        import copy
+        return copy.deepcopy(MOCK_SESSION_DATA)
+    except Exception:
+        pass
+
     current_dir = os.path.dirname(os.path.abspath(__file__))
     candidates = [
         os.path.join(current_dir, "fixtures", "mock_session.json"),

@@ -1,6 +1,20 @@
 import re
 from typing import Optional, List, Tuple, Dict, Any
-from rapidfuzz import fuzz
+try:
+    from rapidfuzz import fuzz
+except ImportError:
+    import difflib
+    class _FallbackFuzz:
+        @staticmethod
+        def ratio(s1: str, s2: str) -> int:
+            return int(difflib.SequenceMatcher(None, str(s1).lower(), str(s2).lower()).ratio() * 100)
+        @staticmethod
+        def partial_ratio(s1: str, s2: str) -> int:
+            s1_l, s2_l = str(s1).lower(), str(s2).lower()
+            if s1_l in s2_l or s2_l in s1_l:
+                return 100
+            return int(difflib.SequenceMatcher(None, s1_l, s2_l).ratio() * 100)
+    fuzz = _FallbackFuzz()
 from api.models.schemas import StudentSession, CourseAttendance, CourseMarks, SemesterGradeRecord
 
 CAMPUS_ALIASES = {
