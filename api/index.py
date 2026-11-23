@@ -2,7 +2,7 @@ import os
 import io
 import json
 from typing import Optional
-from fastapi import FastAPI, Request, Response, Cookie, HTTPException, UploadFile, File, Form, status
+from fastapi import FastAPI, APIRouter, Request, Response, Cookie, HTTPException, UploadFile, File, Form, status
 from fastapi.responses import StreamingResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -33,8 +33,8 @@ from api.nlu.router import stream_chat_response, detect_intent_deterministic
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version="1.0.0",
-    docs_url="/api/docs",
-    openapi_url="/api/openapi.json"
+    docs_url="/docs",
+    openapi_url="/openapi.json"
 )
 
 # CORS configuration
@@ -46,8 +46,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+router = APIRouter()
 
-@app.get("/api/health")
+
+@app.get("/")
+@router.get("/health")
 async def health_check():
     return {
         "status": "healthy",
@@ -57,12 +60,12 @@ async def health_check():
     }
 
 
-@app.post("/api/auth/init", response_model=LoginInitResponse)
+@router.post("/auth/init", response_model=LoginInitResponse)
 async def auth_init():
     return await init_login_flow()
 
 
-@app.post("/api/auth/login", response_model=AuthResponse)
+@router.post("/auth/login", response_model=AuthResponse)
 async def auth_login(req: LoginRequest, response: Response):
     # ZERO PASSWORD LOGGING INVARIANT
     res = await authenticate_and_sync(
@@ -87,7 +90,7 @@ async def auth_login(req: LoginRequest, response: Response):
     return res
 
 
-@app.post("/api/auth/otp", response_model=AuthResponse)
+@router.post("/auth/otp", response_model=AuthResponse)
 async def auth_otp(req: OtpVerifyRequest, response: Response):
     res = await verify_otp(
         login_flow_id=req.login_flow_id,
@@ -108,7 +111,7 @@ async def auth_otp(req: OtpVerifyRequest, response: Response):
     return res
 
 
-@app.get("/api/session/me")
+@router.get("/session/me")
 async def get_current_user_session(request: Request):
     session_id = request.cookies.get(settings.COOKIE_NAME)
     if not session_id:
@@ -135,7 +138,7 @@ async def get_current_user_session(request: Request):
     }
 
 
-@app.post("/api/sync")
+@router.post("/sync")
 async def sync_data(request: Request):
     session_id = request.cookies.get(settings.COOKIE_NAME) or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
     if not session_id:
@@ -153,7 +156,7 @@ async def sync_data(request: Request):
     }
 
 
-@app.post("/api/chat")
+@router.post("/chat")
 async def chat_endpoint(req: ChatRequest, request: Request):
     session_id = request.cookies.get(settings.COOKIE_NAME) or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
     if not session_id:
@@ -177,7 +180,7 @@ async def chat_endpoint(req: ChatRequest, request: Request):
     )
 
 
-@app.post("/api/slides/upload")
+@router.post("/slides/upload")
 async def upload_course_slide(
     request: Request,
     course_code: str = Form(...),
@@ -211,7 +214,7 @@ async def upload_course_slide(
     }
 
 
-@app.get("/api/materials/download")
+@router.get("/materials/download")
 async def download_clean_materials(request: Request, course_code: Optional[str] = None):
     session_id = request.cookies.get(settings.COOKIE_NAME) or request.headers.get("Authorization", "").replace("Bearer ", "").strip()
     if not session_id:
@@ -239,10 +242,15 @@ async def download_clean_materials(request: Request, course_code: Optional[str] 
     }
 
 
-@app.post("/api/auth/logout")
+@router.post("/auth/logout")
 async def auth_logout(request: Request, response: Response):
     session_id = request.cookies.get(settings.COOKIE_NAME)
     if session_id:
         delete_session(session_id)
         response.delete_cookie(settings.COOKIE_NAME, path="/")
     return {"status": "SUCCESS", "message": "Logged out successfully."}
+
+
+# Mount router for both /api prefix and root paths
+app.include_router(router, prefix="/api")
+app.include_router(router)
