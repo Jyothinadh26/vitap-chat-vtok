@@ -58,6 +58,21 @@ app.add_middleware(
 router = APIRouter()
 
 
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    import traceback
+    tb = traceback.format_exc()
+    print(f"[ERROR] Global Exception: {tb}")
+    return JSONResponse(
+        status_code=500,
+        content={
+            "status": "ERROR",
+            "message": f"Server Error: {str(exc)}",
+            "detail": f"{exc.__class__.__name__}: {str(exc)}"
+        }
+    )
+
+
 @app.get("/")
 @router.get("/health")
 async def health_check():
