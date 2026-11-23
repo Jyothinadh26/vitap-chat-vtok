@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
+    // On Vercel, top-level vercel.json handles /api routing directly to the api service
+    if (process.env.VERCEL) {
+      return [];
+    }
     return [
       {
         source: '/api/:path*',

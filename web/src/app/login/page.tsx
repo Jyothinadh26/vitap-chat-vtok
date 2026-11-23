@@ -93,9 +93,9 @@ export default function LoginPage() {
     setErrorMsg(null);
     setSyncStep("Establishing zero-trust VTOP handshake...");
 
-    const u = customUser !== undefined ? customUser : username;
+    const u = (customUser !== undefined ? customUser : username).trim().toUpperCase();
     const p = customPass !== undefined ? customPass : password;
-    const c = customCaptcha !== undefined ? customCaptcha : captchaInput;
+    const c = (customCaptcha !== undefined ? customCaptcha : captchaInput).trim().toUpperCase();
     const o = customOtp !== undefined ? customOtp : (isOtpOnlyMode ? otpValue : undefined);
 
     try {
@@ -103,13 +103,28 @@ export default function LoginPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          username: u.trim(),
+          username: u,
           password: p, // RAM-only
-          captcha: c.trim(),
+          captcha: c,
           login_flow_id: loginFlowId,
           otp: o ? o.trim() : undefined,
         }),
       });
+
+      if (!resp.ok) {
+        let errMessage = `Gateway returned HTTP ${resp.status}`;
+        try {
+          const errData = await resp.json();
+          if (errData.detail) errMessage = errData.detail;
+          else if (errData.message) errMessage = errData.message;
+        } catch {
+          // Response body was not JSON
+        }
+        setIsLoading(false);
+        setSyncStep(null);
+        setErrorMsg(errMessage);
+        return;
+      }
 
       const data = await resp.json();
 
@@ -126,10 +141,10 @@ export default function LoginPage() {
         // Save credentials in user profile if opted in or in OTP mode
         if (rememberCredentials || isOtpOnlyMode) {
           saveUserProfileCredentials({
-            username: u.trim(),
+            username: u,
             password: p,
             saved_at: new Date().toISOString(),
-            student_name: data?.profile?.name || u.trim()
+            student_name: data?.profile?.name || u
           });
         }
 
@@ -147,7 +162,7 @@ export default function LoginPage() {
     } catch (err: any) {
       setIsLoading(false);
       setSyncStep(null);
-      setErrorMsg("Network connection error. Could not connect to authentication gateway.");
+      setErrorMsg("Network connection error. Could not connect to authentication gateway. Tap 'Quick Demo Login' below to test in demo mode.");
     }
   };
 
@@ -304,9 +319,9 @@ export default function LoginPage() {
                   type="text"
                   required
                   value={captchaInput}
-                  onChange={(e) => setCaptchaInput(e.target.value)}
+                  onChange={(e) => setCaptchaInput(e.target.value.toUpperCase())}
                   placeholder="Enter code"
-                  className="flex-1 bg-white/5 border border-white/10 rounded-xl py-2 px-3 text-sm text-white placeholder:text-slate-500 focus:outline-hidden focus:border-indigo-400 transition uppercase font-mono"
+                  className="flex-1 bg-white/5 border border-white/10 rounded-xl py-2 px-3 text-sm text-white placeholder:text-slate-500 focus:outline-hidden focus:border-indigo-400 transition uppercase font-mono tracking-wider"
                 />
               </div>
             </div>
@@ -374,9 +389,9 @@ export default function LoginPage() {
                   type="text"
                   required
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setUsername(e.target.value.toUpperCase())}
                   placeholder="e.g., 22BCE10234"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 pr-3 text-sm text-white placeholder:text-slate-500 focus:outline-hidden focus:border-indigo-400 transition"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 pr-3 text-sm text-white placeholder:text-slate-500 focus:outline-hidden focus:border-indigo-400 transition uppercase font-mono tracking-wider"
                 />
               </div>
             </div>
@@ -427,9 +442,9 @@ export default function LoginPage() {
                   type="text"
                   required
                   value={captchaInput}
-                  onChange={(e) => setCaptchaInput(e.target.value)}
+                  onChange={(e) => setCaptchaInput(e.target.value.toUpperCase())}
                   placeholder="Enter code"
-                  className="flex-1 bg-white/5 border border-white/10 rounded-xl py-2 px-3 text-sm text-white placeholder:text-slate-500 focus:outline-hidden focus:border-indigo-400 transition uppercase font-mono"
+                  className="flex-1 bg-white/5 border border-white/10 rounded-xl py-2 px-3 text-sm text-white placeholder:text-slate-500 focus:outline-hidden focus:border-indigo-400 transition uppercase font-mono tracking-wider"
                 />
               </div>
             </div>
