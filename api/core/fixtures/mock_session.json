@@ -1,0 +1,674 @@
+{
+  "session_id": "demo-session-22bce10234",
+  "last_synced_at": "2026-11-23T19:30:00Z",
+  "profile": {
+    "reg_no": "22BCE10234",
+    "name": "Rahul Sharma",
+    "program": "B.Tech Computer Science and Engineering",
+    "school": "SCOPE",
+    "semester": "Fall Semester 2026-27",
+    "tenth_marks": 93.5,
+    "twelfth_marks": 92.0,
+    "current_cgpa": 8.82,
+    "mentor_name": "Dr. K. Srinivas",
+    "mentor_email": "srinivas.k@vitap.ac.in",
+    "mentor_cabin": "AB1-304",
+    "hostel_block": "MH-2",
+    "room_no": "312"
+  },
+  "academic_calendar": {
+    "semester_name": "Fall Semester 2026-27",
+    "start_date": "2026-07-20",
+    "end_date": "2026-12-15",
+    "instructional_days": [
+      "2026-11-23", "2026-11-24", "2026-11-25", "2026-11-26", "2026-11-27",
+      "2026-11-30", "2026-12-01", "2026-12-02", "2026-12-03", "2026-12-04"
+    ],
+    "holidays": [
+      { "date": "2026-08-15", "name": "Independence Day" },
+      { "date": "2026-10-02", "name": "Gandhi Jayanti" },
+      { "date": "2026-10-20", "name": "Dussehra Break" },
+      { "date": "2026-10-21", "name": "Dussehra Break" },
+      { "date": "2026-11-28", "name": "Fourth Saturday (University Holiday)" },
+      { "date": "2026-11-29", "name": "Sunday" }
+    ],
+    "cat1_start": "2026-09-05",
+    "cat1_end": "2026-09-12",
+    "cat2_start": "2026-10-28",
+    "cat2_end": "2026-11-04",
+    "fat_start": "2026-12-05",
+    "fat_end": "2026-12-15"
+  },
+  "timetable": [
+    {
+      "course_code": "CSE2001",
+      "course_title": "Computer Networks",
+      "course_type": "ETH",
+      "slot": "A1+TA1",
+      "room_no": "AB1-402",
+      "faculty_name": "Dr. Ramesh Babu",
+      "faculty_cabin": "AB1-205",
+      "faculty_email": "ramesh.babu@vitap.ac.in",
+      "schedule": [
+        { "day": "Monday", "start_time": "08:30", "end_time": "10:00" },
+        { "day": "Wednesday", "start_time": "10:15", "end_time": "11:45" },
+        { "day": "Friday", "start_time": "08:30", "end_time": "09:30" }
+      ]
+    },
+    {
+      "course_code": "CSE2001",
+      "course_title": "Computer Networks Lab",
+      "course_type": "ELA",
+      "slot": "L1+L2",
+      "room_no": "CB-Lab 2",
+      "faculty_name": "Dr. Ramesh Babu",
+      "faculty_cabin": "AB1-205",
+      "faculty_email": "ramesh.babu@vitap.ac.in",
+      "schedule": [
+        { "day": "Tuesday", "start_time": "14:00", "end_time": "16:00" }
+      ]
+    },
+    {
+      "course_code": "CSE3002",
+      "course_title": "Operating Systems",
+      "course_type": "ETH",
+      "slot": "B1+TB1",
+      "room_no": "AB1-404",
+      "faculty_name": "Prof. Anitha Rao",
+      "faculty_cabin": "AB1-310",
+      "faculty_email": "anitha.rao@vitap.ac.in",
+      "schedule": [
+        { "day": "Tuesday", "start_time": "08:30", "end_time": "10:00" },
+        { "day": "Thursday", "start_time": "10:15", "end_time": "11:45" },
+        { "day": "Friday", "start_time": "09:35", "end_time": "10:35" }
+      ]
+    },
+    {
+      "course_code": "CSE3002",
+      "course_title": "Operating Systems Lab",
+      "course_type": "ELA",
+      "slot": "L3+L4",
+      "room_no": "CB-Lab 4",
+      "faculty_name": "Prof. Anitha Rao",
+      "faculty_cabin": "AB1-310",
+      "faculty_email": "anitha.rao@vitap.ac.in",
+      "schedule": [
+        { "day": "Thursday", "start_time": "14:00", "end_time": "16:00" }
+      ]
+    },
+    {
+      "course_code": "SWE1004",
+      "course_title": "Introduction to Python",
+      "course_type": "ETH",
+      "slot": "C1+TC1",
+      "room_no": "AB1-503",
+      "faculty_name": "Dr. Suresh Kumar",
+      "faculty_cabin": "CB-412",
+      "faculty_email": "suresh.kumar@vitap.ac.in",
+      "schedule": [
+        { "day": "Monday", "start_time": "10:15", "end_time": "11:45" },
+        { "day": "Thursday", "start_time": "08:30", "end_time": "10:00" }
+      ]
+    },
+    {
+      "course_code": "SWE1004",
+      "course_title": "Introduction to Python Lab",
+      "course_type": "ELA",
+      "slot": "L5+L6",
+      "room_no": "CB-Lab 1",
+      "faculty_name": "Dr. Suresh Kumar",
+      "faculty_cabin": "CB-412",
+      "faculty_email": "suresh.kumar@vitap.ac.in",
+      "schedule": [
+        { "day": "Wednesday", "start_time": "14:00", "end_time": "16:00" }
+      ]
+    },
+    {
+      "course_code": "CSE2004",
+      "course_title": "Database Management Systems",
+      "course_type": "ETH",
+      "slot": "D1+TD1",
+      "room_no": "AB1-302",
+      "faculty_name": "Dr. M. Deepa",
+      "faculty_cabin": "AB1-415",
+      "faculty_email": "deepa.m@vitap.ac.in",
+      "schedule": [
+        { "day": "Tuesday", "start_time": "10:15", "end_time": "11:45" },
+        { "day": "Wednesday", "start_time": "08:30", "end_time": "10:00" }
+      ]
+    },
+    {
+      "course_code": "CSE2004",
+      "course_title": "Database Management Systems Lab",
+      "course_type": "ELA",
+      "slot": "L7+L8",
+      "room_no": "CB-Lab 3",
+      "faculty_name": "Dr. M. Deepa",
+      "faculty_cabin": "AB1-415",
+      "faculty_email": "deepa.m@vitap.ac.in",
+      "schedule": [
+        { "day": "Friday", "start_time": "14:00", "end_time": "16:00" }
+      ]
+    },
+    {
+      "course_code": "MAT2001",
+      "course_title": "Discrete Mathematics and Graph Theory",
+      "course_type": "TH",
+      "slot": "E1+TE1",
+      "room_no": "AB1-208",
+      "faculty_name": "Dr. V. Lakshmi",
+      "faculty_cabin": "AB1-118",
+      "faculty_email": "lakshmi.v@vitap.ac.in",
+      "schedule": [
+        { "day": "Monday", "start_time": "12:00", "end_time": "13:00" },
+        { "day": "Wednesday", "start_time": "12:00", "end_time": "13:00" },
+        { "day": "Friday", "start_time": "11:00", "end_time": "12:00" }
+      ]
+    }
+  ],
+  "attendance": [
+    {
+      "course_code": "CSE2001",
+      "course_title": "Computer Networks",
+      "course_type": "ETH",
+      "slot": "A1+TA1",
+      "attended_classes": 15,
+      "total_classes": 20,
+      "attendance_percentage": 75.0,
+      "remaining_scheduled_classes": 12,
+      "date_logs": [
+        { "date": "2026-11-02", "slot": "A1", "status": "Present" },
+        { "date": "2026-11-04", "slot": "TA1", "status": "Present" },
+        { "date": "2026-11-06", "slot": "A1", "status": "Absent" },
+        { "date": "2026-11-09", "slot": "A1", "status": "Present" },
+        { "date": "2026-11-11", "slot": "TA1", "status": "Present" },
+        { "date": "2026-11-13", "slot": "A1", "status": "Absent" },
+        { "date": "2026-11-16", "slot": "A1", "status": "Present" },
+        { "date": "2026-11-18", "slot": "TA1", "status": "Present" },
+        { "date": "2026-11-20", "slot": "A1", "status": "Present" }
+      ]
+    },
+    {
+      "course_code": "CSE2001",
+      "course_title": "Computer Networks Lab",
+      "course_type": "ELA",
+      "slot": "L1+L2",
+      "attended_classes": 10,
+      "total_classes": 10,
+      "attendance_percentage": 100.0,
+      "remaining_scheduled_classes": 4,
+      "date_logs": [
+        { "date": "2026-11-03", "slot": "L1+L2", "status": "Present" },
+        { "date": "2026-11-10", "slot": "L1+L2", "status": "Present" },
+        { "date": "2026-11-17", "slot": "L1+L2", "status": "Present" }
+      ]
+    },
+    {
+      "course_code": "CSE3002",
+      "course_title": "Operating Systems",
+      "course_type": "ETH",
+      "slot": "B1+TB1",
+      "attended_classes": 22,
+      "total_classes": 25,
+      "attendance_percentage": 88.0,
+      "remaining_scheduled_classes": 10,
+      "date_logs": [
+        { "date": "2026-11-03", "slot": "B1", "status": "Present" },
+        { "date": "2026-11-05", "slot": "TB1", "status": "Present" },
+        { "date": "2026-11-06", "slot": "B1", "status": "Present" },
+        { "date": "2026-11-10", "slot": "B1", "status": "Absent" },
+        { "date": "2026-11-12", "slot": "TB1", "status": "Present" },
+        { "date": "2026-11-13", "slot": "B1", "status": "Present" },
+        { "date": "2026-11-17", "slot": "B1", "status": "Present" },
+        { "date": "2026-11-19", "slot": "TB1", "status": "Present" },
+        { "date": "2026-11-20", "slot": "B1", "status": "Present" }
+      ]
+    },
+    {
+      "course_code": "CSE3002",
+      "course_title": "Operating Systems Lab",
+      "course_type": "ELA",
+      "slot": "L3+L4",
+      "attended_classes": 8,
+      "total_classes": 10,
+      "attendance_percentage": 80.0,
+      "remaining_scheduled_classes": 4,
+      "date_logs": [
+        { "date": "2026-11-05", "slot": "L3+L4", "status": "Present" },
+        { "date": "2026-11-12", "slot": "L3+L4", "status": "Absent" },
+        { "date": "2026-11-19", "slot": "L3+L4", "status": "Present" }
+      ]
+    },
+    {
+      "course_code": "SWE1004",
+      "course_title": "Introduction to Python",
+      "course_type": "ETH",
+      "slot": "C1+TC1",
+      "attended_classes": 18,
+      "total_classes": 22,
+      "attendance_percentage": 81.82,
+      "remaining_scheduled_classes": 8,
+      "date_logs": [
+        { "date": "2026-11-02", "slot": "C1", "status": "Present" },
+        { "date": "2026-11-05", "slot": "TC1", "status": "Present" },
+        { "date": "2026-11-09", "slot": "C1", "status": "Present" },
+        { "date": "2026-11-12", "slot": "TC1", "status": "Present" },
+        { "date": "2026-11-16", "slot": "C1", "status": "Absent" },
+        { "date": "2026-11-19", "slot": "TC1", "status": "Present" }
+      ]
+    },
+    {
+      "course_code": "SWE1004",
+      "course_title": "Introduction to Python Lab",
+      "course_type": "ELA",
+      "slot": "L5+L6",
+      "attended_classes": 9,
+      "total_classes": 10,
+      "attendance_percentage": 90.0,
+      "remaining_scheduled_classes": 4,
+      "date_logs": [
+        { "date": "2026-11-04", "slot": "L5+L6", "status": "Present" },
+        { "date": "2026-11-11", "slot": "L5+L6", "status": "Present" },
+        { "date": "2026-11-18", "slot": "L5+L6", "status": "Present" }
+      ]
+    },
+    {
+      "course_code": "CSE2004",
+      "course_title": "Database Management Systems",
+      "course_type": "ETH",
+      "slot": "D1+TD1",
+      "attended_classes": 11,
+      "total_classes": 16,
+      "attendance_percentage": 68.75,
+      "remaining_scheduled_classes": 14,
+      "date_logs": [
+        { "date": "2026-11-03", "slot": "D1", "status": "Absent" },
+        { "date": "2026-11-04", "slot": "TD1", "status": "Present" },
+        { "date": "2026-11-10", "slot": "D1", "status": "Present" },
+        { "date": "2026-11-11", "slot": "TD1", "status": "Absent" },
+        { "date": "2026-11-17", "slot": "D1", "status": "Absent" },
+        { "date": "2026-11-18", "slot": "TD1", "status": "Present" }
+      ]
+    },
+    {
+      "course_code": "CSE2004",
+      "course_title": "Database Management Systems Lab",
+      "course_type": "ELA",
+      "slot": "L7+L8",
+      "attended_classes": 8,
+      "total_classes": 8,
+      "attendance_percentage": 100.0,
+      "remaining_scheduled_classes": 6,
+      "date_logs": [
+        { "date": "2026-11-06", "slot": "L7+L8", "status": "Present" },
+        { "date": "2026-11-13", "slot": "L7+L8", "status": "Present" },
+        { "date": "2026-11-20", "slot": "L7+L8", "status": "Present" }
+      ]
+    },
+    {
+      "course_code": "MAT2001",
+      "course_title": "Discrete Mathematics and Graph Theory",
+      "course_type": "TH",
+      "slot": "E1+TE1",
+      "attended_classes": 13,
+      "total_classes": 23,
+      "attendance_percentage": 56.52,
+      "remaining_scheduled_classes": 10,
+      "date_logs": [
+        { "date": "2026-11-02", "slot": "E1", "status": "Absent" },
+        { "date": "2026-11-04", "slot": "TE1", "status": "Absent" },
+        { "date": "2026-11-06", "slot": "E1", "status": "Present" },
+        { "date": "2026-11-09", "slot": "E1", "status": "Absent" },
+        { "date": "2026-11-11", "slot": "TE1", "status": "Present" },
+        { "date": "2026-11-13", "slot": "E1", "status": "Absent" },
+        { "date": "2026-11-16", "slot": "E1", "status": "Present" },
+        { "date": "2026-11-18", "slot": "TE1", "status": "Absent" },
+        { "date": "2026-11-20", "slot": "E1", "status": "Present" }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "course_code": "SWE1004",
+      "course_title": "Introduction to Python",
+      "course_type": "ETH",
+      "components": [
+        { "name": "CAT-1", "max_marks": 50.0, "scored_marks": 45.0, "weightage": 15.0, "class_average": 34.2 },
+        { "name": "CAT-2", "max_marks": 50.0, "scored_marks": 43.5, "weightage": 15.0, "class_average": 31.8 },
+        { "name": "DA-1", "max_marks": 10.0, "scored_marks": 10.0, "weightage": 10.0, "class_average": 8.6 },
+        { "name": "DA-2", "max_marks": 10.0, "scored_marks": 9.5, "weightage": 10.0, "class_average": 8.1 },
+        { "name": "FAT", "max_marks": 100.0, "scored_marks": null, "weightage": 50.0, "class_average": null }
+      ],
+      "current_internal_total": 46.05,
+      "current_internal_max": 50.0
+    },
+    {
+      "course_code": "SWE1004",
+      "course_title": "Introduction to Python Lab",
+      "course_type": "ELA",
+      "components": [
+        { "name": "Lab CAT", "max_marks": 50.0, "scored_marks": 46.0, "weightage": 25.0, "class_average": 38.0 },
+        { "name": "Lab DA / Continuous Eval", "max_marks": 50.0, "scored_marks": 48.0, "weightage": 25.0, "class_average": 42.0 },
+        { "name": "Lab FAT", "max_marks": 50.0, "scored_marks": null, "weightage": 50.0, "class_average": null }
+      ],
+      "current_internal_total": 47.0,
+      "current_internal_max": 50.0
+    },
+    {
+      "course_code": "CSE2001",
+      "course_title": "Computer Networks",
+      "course_type": "ETH",
+      "components": [
+        { "name": "CAT-1", "max_marks": 50.0, "scored_marks": 40.0, "weightage": 15.0, "class_average": 31.0 },
+        { "name": "CAT-2", "max_marks": 50.0, "scored_marks": 42.0, "weightage": 15.0, "class_average": 32.5 },
+        { "name": "DA-1", "max_marks": 10.0, "scored_marks": 9.0, "weightage": 10.0, "class_average": 7.9 },
+        { "name": "DA-2", "max_marks": 10.0, "scored_marks": 8.5, "weightage": 10.0, "class_average": 8.0 },
+        { "name": "FAT", "max_marks": 100.0, "scored_marks": null, "weightage": 50.0, "class_average": null }
+      ],
+      "current_internal_total": 42.1,
+      "current_internal_max": 50.0
+    },
+    {
+      "course_code": "CSE2001",
+      "course_title": "Computer Networks Lab",
+      "course_type": "ELA",
+      "components": [
+        { "name": "Lab CAT", "max_marks": 50.0, "scored_marks": 44.0, "weightage": 25.0, "class_average": 36.5 },
+        { "name": "Lab DA / Continuous Eval", "max_marks": 50.0, "scored_marks": 46.0, "weightage": 25.0, "class_average": 40.0 },
+        { "name": "Lab FAT", "max_marks": 50.0, "scored_marks": null, "weightage": 50.0, "class_average": null }
+      ],
+      "current_internal_total": 45.0,
+      "current_internal_max": 50.0
+    },
+    {
+      "course_code": "CSE3002",
+      "course_title": "Operating Systems",
+      "course_type": "ETH",
+      "components": [
+        { "name": "CAT-1", "max_marks": 50.0, "scored_marks": 39.0, "weightage": 15.0, "class_average": 29.5 },
+        { "name": "CAT-2", "max_marks": 50.0, "scored_marks": 44.0, "weightage": 15.0, "class_average": 33.0 },
+        { "name": "DA-1", "max_marks": 10.0, "scored_marks": 9.5, "weightage": 10.0, "class_average": 8.2 },
+        { "name": "DA-2", "max_marks": 10.0, "scored_marks": 9.0, "weightage": 10.0, "class_average": 8.0 },
+        { "name": "FAT", "max_marks": 100.0, "scored_marks": null, "weightage": 50.0, "class_average": null }
+      ],
+      "current_internal_total": 43.4,
+      "current_internal_max": 50.0
+    },
+    {
+      "course_code": "CSE2004",
+      "course_title": "Database Management Systems",
+      "course_type": "ETH",
+      "components": [
+        { "name": "CAT-1", "max_marks": 50.0, "scored_marks": 35.0, "weightage": 15.0, "class_average": 30.0 },
+        { "name": "CAT-2", "max_marks": 50.0, "scored_marks": 38.0, "weightage": 15.0, "class_average": 31.0 },
+        { "name": "DA-1", "max_marks": 10.0, "scored_marks": 8.0, "weightage": 10.0, "class_average": 7.5 },
+        { "name": "DA-2", "max_marks": 10.0, "scored_marks": 8.5, "weightage": 10.0, "class_average": 7.8 },
+        { "name": "FAT", "max_marks": 100.0, "scored_marks": null, "weightage": 50.0, "class_average": null }
+      ],
+      "current_internal_total": 38.4,
+      "current_internal_max": 50.0
+    },
+    {
+      "course_code": "MAT2001",
+      "course_title": "Discrete Mathematics and Graph Theory",
+      "course_type": "TH",
+      "components": [
+        { "name": "CAT-1", "max_marks": 50.0, "scored_marks": 30.0, "weightage": 15.0, "class_average": 28.0 },
+        { "name": "CAT-2", "max_marks": 50.0, "scored_marks": 33.0, "weightage": 15.0, "class_average": 29.0 },
+        { "name": "Quiz-1", "max_marks": 10.0, "scored_marks": 7.0, "weightage": 10.0, "class_average": 6.8 },
+        { "name": "Quiz-2", "max_marks": 10.0, "scored_marks": 8.0, "weightage": 10.0, "class_average": 7.1 },
+        { "name": "FAT", "max_marks": 100.0, "scored_marks": null, "weightage": 50.0, "class_average": null }
+      ],
+      "current_internal_total": 33.9,
+      "current_internal_max": 50.0
+    }
+  ],
+  "exam_schedule": [
+    {
+      "course_code": "CSE2001",
+      "course_title": "Computer Networks",
+      "exam_type": "FAT",
+      "date": "2026-12-05",
+      "session": "FN",
+      "reporting_time": "09:00 AM",
+      "exam_time": "09:30 AM - 12:30 PM",
+      "academic_block": "AB-1",
+      "room_no": "AB1-402",
+      "seat_no": "C-14",
+      "seat_row": 3,
+      "seat_col": 4,
+      "total_rows": 6,
+      "total_cols": 6
+    },
+    {
+      "course_code": "CSE3002",
+      "course_title": "Operating Systems",
+      "exam_type": "FAT",
+      "date": "2026-12-08",
+      "session": "AN",
+      "reporting_time": "01:30 PM",
+      "exam_time": "02:00 PM - 05:00 PM",
+      "academic_block": "CB",
+      "room_no": "CB-305",
+      "seat_no": "B-08",
+      "seat_row": 2,
+      "seat_col": 4,
+      "total_rows": 5,
+      "total_cols": 5
+    },
+    {
+      "course_code": "SWE1004",
+      "course_title": "Introduction to Python",
+      "exam_type": "FAT",
+      "date": "2026-12-10",
+      "session": "FN",
+      "reporting_time": "09:00 AM",
+      "exam_time": "09:30 AM - 12:30 PM",
+      "academic_block": "AB-1",
+      "room_no": "AB1-503",
+      "seat_no": "D-03",
+      "seat_row": 4,
+      "seat_col": 2,
+      "total_rows": 6,
+      "total_cols": 5
+    },
+    {
+      "course_code": "CSE2004",
+      "course_title": "Database Management Systems",
+      "exam_type": "FAT",
+      "date": "2026-12-12",
+      "session": "AN",
+      "reporting_time": "01:30 PM",
+      "exam_time": "02:00 PM - 05:00 PM",
+      "academic_block": "AB-1",
+      "room_no": "AB1-302",
+      "seat_no": "A-11",
+      "seat_row": 1,
+      "seat_col": 5,
+      "total_rows": 5,
+      "total_cols": 6
+    },
+    {
+      "course_code": "MAT2001",
+      "course_title": "Discrete Mathematics and Graph Theory",
+      "exam_type": "FAT",
+      "date": "2026-12-14",
+      "session": "FN",
+      "reporting_time": "09:00 AM",
+      "exam_time": "09:30 AM - 12:30 PM",
+      "academic_block": "AB-1",
+      "room_no": "AB1-208",
+      "seat_no": "E-05",
+      "seat_row": 5,
+      "seat_col": 2,
+      "total_rows": 6,
+      "total_cols": 5
+    }
+  ],
+  "grade_history": [
+    {
+      "semester": "2024-25 Fall Semester",
+      "sgpa": 8.92,
+      "credits_earned": 21.0,
+      "courses": [
+        { "course_code": "CSE1001", "course_title": "Problem Solving and Programming", "credits": 4.0, "grade": "S", "course_type": "ETH" },
+        { "course_code": "MAT1001", "course_title": "Calculus for Engineers", "credits": 4.0, "grade": "A", "course_type": "TH" },
+        { "course_code": "PHY1001", "course_title": "Engineering Physics", "credits": 4.0, "grade": "A", "course_type": "ETH" },
+        { "course_code": "EEE1001", "course_title": "Basic Electrical and Electronics", "credits": 4.0, "grade": "S", "course_type": "ETH" },
+        { "course_code": "ENG1001", "course_title": "Basic English", "credits": 2.0, "grade": "A", "course_type": "TH" },
+        { "course_code": "EXC1001", "course_title": "Extracurricular Activity", "credits": 3.0, "grade": "S", "course_type": "SS" }
+      ]
+    },
+    {
+      "semester": "2024-25 Winter Semester",
+      "sgpa": 8.78,
+      "credits_earned": 22.0,
+      "courses": [
+        { "course_code": "CSE1002", "course_title": "Data Structures and Algorithms", "credits": 4.0, "grade": "A", "course_type": "ETH" },
+        { "course_code": "CSE1003", "course_title": "Digital Logic and Design", "credits": 4.0, "grade": "S", "course_type": "ETH" },
+        { "course_code": "MAT1002", "course_title": "Linear Algebra and Differential Equations", "credits": 4.0, "grade": "B", "course_type": "TH" },
+        { "course_code": "CHY1001", "course_title": "Engineering Chemistry", "credits": 4.0, "grade": "A", "course_type": "ETH" },
+        { "course_code": "HUM1001", "course_title": "Ethics and Values", "credits": 3.0, "grade": "S", "course_type": "TH" },
+        { "course_code": "ENG1002", "course_title": "Professional English", "credits": 3.0, "grade": "A", "course_type": "ETH" }
+      ]
+    },
+    {
+      "semester": "2025-26 Fall Semester",
+      "sgpa": 8.75,
+      "credits_earned": 23.0,
+      "courses": [
+        { "course_code": "CSE2002", "course_title": "Theory of Computation", "credits": 4.0, "grade": "A", "course_type": "TH" },
+        { "course_code": "CSE2003", "course_title": "Computer Architecture and Organization", "credits": 4.0, "grade": "S", "course_type": "ETH" },
+        { "course_code": "MAT2002", "course_title": "Probability and Statistics", "credits": 4.0, "grade": "A", "course_type": "TH" },
+        { "course_code": "CSE2005", "course_title": "Object Oriented Programming with Java", "credits": 4.0, "grade": "S", "course_type": "ETH" },
+        { "course_code": "ECE2001", "course_title": "Microprocessors and Interfacing", "credits": 4.0, "grade": "B", "course_type": "ETH" },
+        { "course_code": "ENV1001", "course_title": "Environmental Studies", "credits": 3.0, "grade": "A", "course_type": "TH" }
+      ]
+    }
+  ],
+  "credit_distribution": {
+    "baskets": {
+      "UC": { "required": 45.0, "earned": 42.0 },
+      "PC": { "required": 60.0, "earned": 46.0 },
+      "PE": { "required": 30.0, "earned": 18.0 },
+      "UE": { "required": 12.0, "earned": 6.0 }
+    },
+    "total_required": 147.0,
+    "total_earned": 112.0,
+    "cgpa": 8.82
+  },
+  "deadlines": [
+    {
+      "course_code": "CSE2001",
+      "course_title": "Computer Networks",
+      "title": "Digital Assignment 2 - Socket Programming in Python",
+      "due_date": "2026-11-26",
+      "due_time": "23:59",
+      "submission_type": "Digital Assignment",
+      "status": "Pending"
+    },
+    {
+      "course_code": "CSE3002",
+      "course_title": "Operating Systems",
+      "title": "Lab Project Milestone 2 - Process Scheduler",
+      "due_date": "2026-11-28",
+      "due_time": "17:00",
+      "submission_type": "Project Report",
+      "status": "Pending"
+    },
+    {
+      "course_code": "SWE1004",
+      "course_title": "Introduction to Python",
+      "title": "Online Quiz 2 - File I/O and Regex",
+      "due_date": "2026-11-30",
+      "due_time": "20:00",
+      "submission_type": "Quiz",
+      "status": "Pending"
+    },
+    {
+      "course_code": "CSE2004",
+      "course_title": "Database Management Systems",
+      "title": "DA 2 - Normalization & Complex SQL Queries",
+      "due_date": "2026-12-02",
+      "due_time": "23:59",
+      "submission_type": "Digital Assignment",
+      "status": "Pending"
+    }
+  ],
+  "hostel_outings": [
+    {
+      "id": "OUT-2026-8812",
+      "type": "Weekend",
+      "out_date": "2026-11-28 09:00",
+      "in_date": "2026-11-29 18:30",
+      "place": "Vijayawada",
+      "status": "Approved"
+    },
+    {
+      "id": "OUT-2026-9041",
+      "type": "General",
+      "out_date": "2026-12-01 16:30",
+      "in_date": "2026-12-01 20:30",
+      "place": "Guntur City Center",
+      "status": "Pending"
+    }
+  ],
+  "biometric_logs": [
+    {
+      "date": "2026-11-23",
+      "in_time": "08:15 AM",
+      "out_time": null,
+      "location": "MH-2 Hostel Turnstile"
+    },
+    {
+      "date": "2026-11-22",
+      "in_time": "08:20 AM",
+      "out_time": "08:45 PM",
+      "location": "Main Gate Turnstile"
+    },
+    {
+      "date": "2026-11-21",
+      "in_time": "09:05 AM",
+      "out_time": "07:30 PM",
+      "location": "MH-2 Hostel Turnstile"
+    }
+  ],
+  "course_materials": [
+    {
+      "course_code": "CSE2001",
+      "course_title": "Computer Networks",
+      "module": "Module 1",
+      "title": "Network Models & OSI vs TCP/IP",
+      "filename": "CSE2001-Module1-OSI-Model.pdf",
+      "url": "https://vtop.vitap.ac.in/materials/CSE2001_M1.pdf",
+      "summary": "Covers physical and data link layers, OSI 7-layer reference model, TCP/IP stack comparison, framing, and bit stuffing."
+    },
+    {
+      "course_code": "CSE2001",
+      "course_title": "Computer Networks",
+      "module": "Module 2",
+      "title": "Data Link Layer & Error Control",
+      "filename": "CSE2001-Module2-ErrorControl.pdf",
+      "url": "https://vtop.vitap.ac.in/materials/CSE2001_M2.pdf",
+      "summary": "Covers CRC cyclic redundancy check, Hamming code, Stop-and-Wait, Go-Back-N, and Selective Repeat sliding window protocols."
+    },
+    {
+      "course_code": "CSE3002",
+      "course_title": "Operating Systems",
+      "module": "Module 1",
+      "title": "Process Management & CPU Scheduling",
+      "filename": "CSE3002-Module1-Scheduling.pdf",
+      "url": "https://vtop.vitap.ac.in/materials/CSE3002_M1.pdf",
+      "summary": "Covers process state transitions, PCB, context switching, FCFS, SJF, SRTF, Round Robin scheduling algorithms, and Gantt charts."
+    },
+    {
+      "course_code": "SWE1004",
+      "course_title": "Introduction to Python",
+      "module": "Module 3",
+      "title": "File Handling & Regular Expressions",
+      "filename": "SWE1004-Module3-Files-Regex.pdf",
+      "url": "https://vtop.vitap.ac.in/materials/SWE1004_M3.pdf",
+      "summary": "Covers open, read, write modes, context managers (with statement), re.search, re.findall, regex patterns, and exception handling."
+    }
+  ]
+}

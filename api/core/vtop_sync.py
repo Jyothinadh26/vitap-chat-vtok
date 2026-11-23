@@ -14,9 +14,18 @@ _pending_login_flows: Dict[str, dict] = {}
 
 def get_mock_session_data() -> dict:
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    fixture_path = os.path.join(current_dir, "..", "tests", "fixtures", "mock_session.json")
-    with open(fixture_path, "r", encoding="utf-8") as f:
-        return json.load(f)
+    candidates = [
+        os.path.join(current_dir, "fixtures", "mock_session.json"),
+        os.path.join(current_dir, "..", "tests", "fixtures", "mock_session.json"),
+        os.path.join(current_dir, "..", "fixtures", "mock_session.json"),
+        os.path.join(os.getcwd(), "api", "core", "fixtures", "mock_session.json"),
+        os.path.join(os.getcwd(), "core", "fixtures", "mock_session.json"),
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            with open(p, "r", encoding="utf-8") as f:
+                return json.load(f)
+    raise FileNotFoundError("Could not locate mock_session.json in any expected bundle path.")
 
 def generate_starter_chips_and_alerts(session: StudentSession) -> Tuple[list, list]:
     starter_chips = ["Today's classes", "Any 75% alerts?", "When is my next exam?", "My CN marks"]
