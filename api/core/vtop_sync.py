@@ -139,6 +139,8 @@ async def authenticate_and_sync(
             raw_data["last_synced_at"] = datetime.utcnow().isoformat() + "Z"
             if clean_user != "DEMO" and clean_user != "TEST":
                 raw_data["profile"]["reg_no"] = clean_user
+                if clean_user != "22BCE10234":
+                    raw_data["profile"]["name"] = clean_user
             if otp is not None:
                 raw_data["profile"]["credentials_saved"] = True
                 
@@ -160,6 +162,8 @@ async def authenticate_and_sync(
         session_id = str(uuid.uuid4())
         raw_data["session_id"] = session_id
         raw_data["profile"]["reg_no"] = clean_user
+        if clean_user != "22BCE10234":
+            raw_data["profile"]["name"] = clean_user
         if otp is not None:
             raw_data["profile"]["credentials_saved"] = True
         student_session = StudentSession.model_validate(raw_data)
@@ -198,6 +202,8 @@ async def verify_otp(
         clean_user = username.strip().upper()
         if clean_user != "DEMO" and clean_user != "TEST":
             raw_data["profile"]["reg_no"] = clean_user
+            if clean_user != "22BCE10234":
+                raw_data["profile"]["name"] = clean_user
     raw_data["profile"]["credentials_saved"] = True
     student_session = StudentSession.model_validate(raw_data)
     save_session(session_id, student_session)

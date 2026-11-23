@@ -75,11 +75,14 @@ export default function ChatWorkspacePage() {
   const initWelcomeMessage = (data: any) => {
     const name = data?.profile?.name || "Student";
     const regNo = data?.profile?.reg_no || "";
+    const greetingTarget = name && regNo && name !== regNo && !name.includes(regNo)
+      ? `${name} (${regNo})`
+      : (name || regNo || "Student");
 
     const welcomeMsg: ChatMessage = {
       id: "welcome-1",
       role: "assistant",
-      text: `Hello ${name} (${regNo})! I'm your VIT-AP VTOP Assistant. I can track your 75% attendance criteria, predict your FAT grade, check exam seating, simulate bunks, and audit your placement cutoffs. How can I assist you today?`,
+      text: `Hello ${greetingTarget}! I'm your VIT-AP VTOP Assistant. I can track your 75% attendance criteria, predict your FAT grade, check exam seating, simulate bunks, and audit your placement cutoffs. How can I assist you today?`,
       chips: ["Any 75% alerts?", "When is my next exam?", "Computer Networks marks", "Today's classes"],
     };
 

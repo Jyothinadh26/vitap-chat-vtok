@@ -56,18 +56,45 @@ def detect_intent_deterministic(query: str, session: StudentSession) -> Dict[str
             text = f"Here is the real-time snapshot for {res['card_payload']['course_title']} ({res['card_payload']['course_code']}), including attendance, internal marks, and upcoming schedule."
             return {"text": text, "tool_result": res}
 
-    # 2. Fragmented "seat" / "room" / "ekkada" / "kahan"
-    if ("seat" in tokens or "room" in tokens or "ekkada" in tokens or "kahan" in tokens) and not ("hostel" in tokens):
-        res = get_exam_schedule(session, next_only=True)
-        next_exam = res["card_payload"]["exams"][0] if res["card_payload"]["exams"] else None
-        if next_exam:
-            text = f"Your next exam is {next_exam['course_title']} ({next_exam['course_code']}) in Room {next_exam['room_no']}, Academic Block {next_exam['academic_block']}. Seat Number: {next_exam['seat_no']}."
+    # 2. Exam Schedule & Seating & Hall Ticket ("exam", "exams", "seat", "seating", "room", "hall", "venue", "fat schedule", "when is my next exam", "ekkada", "kahan")
+    is_exam_query = (
+        "exam" in tokens or "exams" in tokens or "xam" in tokens or
+        "seat" in tokens or "seating" in tokens or "hall" in tokens or
+        "venue" in tokens or "invigilator" in tokens or
+        ("room" in tokens and "hostel" not in tokens) or
+        "ekkada" in tokens or "kahan" in tokens or
+        "hallticket" in tokens or "pass" in tokens or
+        "when is my next exam" in norm or "what is my next exam" in norm
+    )
+    is_marks_query = any(k in norm for k in ["mark", "marks", "mrk", "score", "scores", "predict", "target", "grade", "grades"])
+
+    if is_exam_query and not is_marks_query:
+        matched_course = None
+        for alias in CAMPUS_ALIASES:
+            if alias in tokens or CAMPUS_ALIASES[alias].lower() in norm:
+                matched_course = alias
+                break
+
+        is_next_only = (
+            "next" in tokens or "upcoming" in tokens or "repu" in tokens or
+            "kal" in tokens or ("when" in tokens and "all" not in tokens) or
+            norm in ("exam", "exams", "seat", "seating", "hall ticket") or
+            "when is my next exam" in norm or "what is my next exam" in norm
+        )
+        res = get_exam_schedule(session, course_query=matched_course, next_only=is_next_only)
+        exams = res["card_payload"].get("exams", [])
+        if exams:
+            next_e = exams[0]
+            if is_next_only or len(exams) == 1:
+                text = f"Your next scheduled exam is {next_e['course_title']} ({next_e['course_code']}) on {next_e['date']} ({next_e['session']}) at {next_e['exam_time']} in Room {next_e['room_no']}, Academic Block {next_e['academic_block']}. Seat Number: {next_e['seat_no']}."
+            else:
+                text = f"Here is your upcoming exam schedule ({len(exams)} exams). Your next scheduled exam is {next_e['course_title']} on {next_e['date']}."
         else:
             text = "No upcoming exam seating records found."
         return {"text": text, "tool_result": res}
 
     # 3. Fragmented "75?" / "75" / "attendance" / "bunk" / "skip"
-    if ("75" in norm or "bunk" in tokens or "skip" in tokens or "attendance" in tokens or "atten" in tokens):
+    if ("75" in norm or "bunk" in tokens or "skip" in tokens or "attendance" in tokens or "atten" in tokens or "criteria" in tokens):
         # Check if a specific course is mentioned
         matched_course = None
         for alias in CAMPUS_ALIASES:
@@ -87,7 +114,7 @@ def detect_intent_deterministic(query: str, session: StudentSession) -> Dict[str
         return {"text": text, "tool_result": res}
 
     # 4. Marks / Score / CAT / FAT / Quiz / Lab
-    if ("mark" in norm or "mrk" in norm or "score" in norm or "cat" in tokens or "cat1" in tokens or "cat2" in tokens or "da" in tokens):
+    if ("mark" in norm or "mrk" in norm or "score" in norm or "cat" in tokens or "cat1" in tokens or "cat2" in tokens or "da" in tokens or "lab" in tokens or "labs" in tokens or "quiz" in tokens):
         # Check if student is asking for FAT grade prediction
         if "predict" in norm or "target" in norm or ("how much" in norm and "fat" in tokens) or ("nid" in norm and "fat" in tokens):
             target_course = "SWE1004"
@@ -100,7 +127,7 @@ def detect_intent_deterministic(query: str, session: StudentSession) -> Dict[str
             text = f"For {res['card_payload']['course_code']}, you need {res['card_payload']['effective_min_fat']} in FAT for grade '{res['card_payload']['target_grade']}'. {res['card_payload']['status_note']}"
             return {"text": text, "tool_result": res}
 
-        # Ambiguous collision: "lab marks" without subject
+        # Ambiguous collision: "lab marks" or "lab" without specific subject
         is_lab = is_lab_query(norm)
         is_th = is_theory_query(norm)
         matched_course = None
@@ -124,11 +151,15 @@ def detect_intent_deterministic(query: str, session: StudentSession) -> Dict[str
         text = "Here are your component-level marks, weightages, and class averages:"
         return {"text": text, "tool_result": res}
 
-    # 5. GPA / CGPA / SGPA / Semester Grade History
-    if "gpa" in tokens or "cgpa" in tokens or "sgpa" in tokens or "cg" in tokens or "sem" in tokens or "grade" in tokens:
+    # 5. GPA / CGPA / SGPA / Semester Grade History / Credit Distribution
+    if any(k in tokens for k in ["gpa", "cgpa", "sgpa", "cg", "sem", "semester", "grade", "grades", "credit", "credits", "basket", "baskets", "placement", "cutoff"]):
         if "credit" in tokens or "basket" in tokens or "placement" in tokens or "cutoff" in tokens:
             res = get_credit_distribution(session)
             text = f"Your current CGPA is {res['card_payload']['cgpa']}. Total credits earned: {res['card_payload']['total_earned']}/{res['card_payload']['total_required']}."
+            return {"text": text, "tool_result": res}
+        elif ("2026" in norm or "current" in tokens or "present" in tokens) and not ("history" in tokens or "past" in tokens):
+            res = get_subject_marks(session, course_query="ALL")
+            text = f"You are currently enrolled in {session.profile.semester}. Here is your internal marks and progress summary:"
             return {"text": text, "tool_result": res}
         else:
             res = get_semester_gpa(session, semester_query=norm)
@@ -136,33 +167,33 @@ def detect_intent_deterministic(query: str, session: StudentSession) -> Dict[str
             return {"text": text, "tool_result": res}
 
     # 6. Deadlines / Digital Assignments
-    if "deadline" in tokens or "due" in tokens or "da" in tokens or "assignment" in tokens:
+    if "deadline" in tokens or "deadlines" in tokens or "due" in tokens or "da" in tokens or "assignment" in tokens or "assignments" in tokens or "submission" in tokens or "project" in tokens:
         res = get_campus_life_and_deadlines(session, category="deadlines")
         text = "Here are your upcoming Digital Assignments and project deadlines:"
         return {"text": text, "tool_result": res}
 
     # 7. Today's Classes / Timetable / Tomorrow
-    if "today" in tokens or "timetable" in tokens or "class" in tokens or "schedule" in tokens or "eroju" in tokens or "aaj" in tokens:
+    if "today" in tokens or "timetable" in tokens or "class" in tokens or "classes" in tokens or "schedule" in tokens or "period" in tokens or "periods" in tokens or "eroju" in tokens or "aaj" in tokens:
         res = get_campus_life_and_deadlines(session, category="timetable")
         text = f"Here is your timetable schedule for {res['card_payload']['day']}:"
         return {"text": text, "tool_result": res}
 
     # 8. Campus Life / Faculty / Mentor / Outing / Biometric
-    if "mentor" in tokens or "proctor" in tokens or "cabin" in tokens or "faculty" in tokens:
+    if "mentor" in tokens or "proctor" in tokens or "cabin" in tokens or "faculty" in tokens or "professor" in tokens:
         res = get_campus_life_and_deadlines(session, category="faculty")
         text = f"Your mentor is {res['card_payload']['mentor']['name']} (Cabin: {res['card_payload']['mentor']['cabin']})."
         return {"text": text, "tool_result": res}
-    if "outing" in tokens or "leave" in tokens:
+    if "outing" in tokens or "leave" in tokens or "gatepass" in tokens:
         res = get_campus_life_and_deadlines(session, category="outing")
         text = "Here is your hostel outing approval history:"
         return {"text": text, "tool_result": res}
-    if "biometric" in tokens or "punch" in tokens:
+    if "biometric" in tokens or "punch" in tokens or "turnstile" in tokens:
         res = get_campus_life_and_deadlines(session, category="biometric")
         text = "Here are your recent biometric turnstile punch logs:"
         return {"text": text, "tool_result": res}
 
     # 9. Slides & Study Materials
-    if "slide" in tokens or "notes" in tokens or "material" in tokens or "pdf" in tokens or "summary" in tokens:
+    if "slide" in tokens or "slides" in tokens or "notes" in tokens or "material" in tokens or "materials" in tokens or "pdf" in tokens or "summary" in tokens:
         matched_course = "CSE2001"
         for alias in CAMPUS_ALIASES:
             if alias in tokens:

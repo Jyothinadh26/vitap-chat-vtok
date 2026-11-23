@@ -144,3 +144,18 @@ def test_b12_ambiguous_collision_lab_marks(mock_session):
     assert len(results) >= 2
     for r in results:
         assert r["course_type"] in ("ELA", "LO")
+
+
+def test_b13_exam_phrasings(mock_session):
+    for q in ["When is my next exam?", "what is my next exam", "exam", "exams"]:
+        res = detect_intent_deterministic(q, mock_session)
+        assert res["tool_result"]["ui_card_type"] == "exam_pass"
+        assert len(res["tool_result"]["card_payload"]["exams"]) >= 1
+
+
+def test_b14_current_semester_and_labs(mock_session):
+    res_sem = detect_intent_deterministic("fall semester 202627", mock_session)
+    assert res_sem["tool_result"]["ui_card_type"] == "marks_fat"
+
+    res_lab = detect_intent_deterministic("frontend lab", mock_session)
+    assert res_lab["tool_result"]["ui_card_type"] == "marks_fat"
